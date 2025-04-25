@@ -1,7 +1,7 @@
 package Model;
 
-//La interface de "Curable"
-public interface Curable {
+//La interface de "Magico"
+public interface Magico {
     //El método abstracto que se implementa obligatoriamente con esta interface
-    void curar();
+    void lanzarHechizo();
 }
