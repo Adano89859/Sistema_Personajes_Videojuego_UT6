@@ -28,6 +28,14 @@ public class Personaje_Magico extends Personaje implements Magico{
         this("Predeterminado",nivel,100,0);
     }
 
+    //Getter y Setter
+    public int getMana() {
+        return mana;
+    }
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
     //Método que la superclase me obliga a desarrollar.
     @Override
     public void atacar(){
