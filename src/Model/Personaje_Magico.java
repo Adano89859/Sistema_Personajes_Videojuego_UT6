@@ -61,7 +61,9 @@ public class Personaje_Magico extends Personaje implements Magico{
     public boolean equals(Object objetoAComparar){
         //Compruebo que la superClase de esta, "Personaje" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
         if (!super.equals(objetoAComparar)) return false;
-        //Debido a que esta clase "Personaje_Magico" no tiene nuevos atributos que me interesen para comparar, decido que el equals de la superclase es suficiente para asegurar la igualdad
+        //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
+        if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
+        //Debido a que esta clase "Personaje_Magico" no tiene nuevos atributos que me interesen para comparar, termino aquí la comparación
         return true;
     }
 
