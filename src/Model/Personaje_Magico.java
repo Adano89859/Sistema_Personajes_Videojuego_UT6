@@ -3,26 +3,29 @@ package Model;
 public class Personaje_Magico extends Personaje implements Magico{
 
     //Atributos:
-    //Este Personaje_Magico hereda sus atributos de su superclase, "Personaje" en este caso.
+    protected int mana;
+    //Se le añade que Personaje_Magico hereda sus atributos de su superclase, "Personaje" en este caso.
 
     //Métodos:
     //CONSTRUCTOR
-    public Personaje_Magico(String nombre, int nivel, int salud){
+    public Personaje_Magico(String nombre, int nivel, int salud, int mana){
         //Llevo los elementos al constructor de la superclase
         super(nombre, nivel, salud);
+        //Añado el atributo concreto que tiene esta clase
+        this.mana = mana;
     }
     //Constructores con falta de parámetros
     public Personaje_Magico(int nivel, int salud){
-        super("Predeterminado",nivel,salud);
+        this("Predeterminado",nivel,salud,0);
     }
     public Personaje_Magico(String nombre, int nivel){
-        super(nombre,nivel,100);
+        this(nombre,nivel,100,0);
     }
     public Personaje_Magico(String nombre){
-        super(nombre,0,100);
+        this(nombre,0,100,0);
     }
     public Personaje_Magico(int nivel){
-        super("Predeterminado",nivel,100);
+        this("Predeterminado",nivel,100,0);
     }
 
     //Método que la superclase me obliga a desarrollar.
@@ -49,7 +52,8 @@ public class Personaje_Magico extends Personaje implements Magico{
     //Método para cambiar el "toString" de esta clase
     @Override
     public String toString(){
-        return super.toString();
+        //Decido que en String aparezca el tipo de personaje que es
+        return "Personaje Mágico: " + this.getNombre();
     }
 
     //Método para cambiar el "equals" de esta clase
@@ -57,7 +61,7 @@ public class Personaje_Magico extends Personaje implements Magico{
     public boolean equals(Object objetoAComparar){
         //Compruebo que la superClase de esta, "Personaje" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
         if (!super.equals(objetoAComparar)) return false;
-        //Debido a que esta clase "Personaje_Magico" no tiene nuevos atributos, decido que el equals de la superclase es suficiente para asegurar la igualdad
+        //Debido a que esta clase "Personaje_Magico" no tiene nuevos atributos que me interesen para comparar, decido que el equals de la superclase es suficiente para asegurar la igualdad
         return true;
     }
 
