@@ -1,17 +1,41 @@
 package App;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Controller.Juego;
+import Model.Hechicero;
+import Model.Mago;
+import Model.Personaje;
+import Model.Personaje_Magico;
+
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Creo la clase juego y le introduzco los personajes
+        Juego juego = new Juego(crearPersonajesPredeterminados());
+
+
+        //Llamo al método "mostrarAciones" de "juego"
+        juego.mostrarAcciones();
+
+    }
+    /*
+    Resultado: Crea un ArrayList de personajes
+    Return: Devuleve el ArrayList de personajes
+    */
+    static public ArrayList<Personaje> crearPersonajesPredeterminados() {
+        //Creo el ArrayList de Personajes
+        ArrayList<Personaje> personajes = new ArrayList<>();
+        //No añado un objeto de la clase "Personaje" porque es abstracta y no me deja crear una instancia
+        //Añado los personajes mágicos
+        personajes.add(new Personaje_Magico("Elemental", 0, 100, 0));
+        personajes.add(new Mago("Gandalf", 2, 100, 10,7));
+        personajes.add(new Hechicero("Mer", 1, 100, 3,1));
+
+        //Añadir los personajes físicos
+
+
+        //Devuelvo el ArrayList
+        return personajes;
     }
 }
