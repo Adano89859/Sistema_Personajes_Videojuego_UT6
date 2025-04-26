@@ -30,6 +30,28 @@ public abstract class Personaje {
         this("Predeterminado",nivel,100);
     }
 
+    //Setter
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    //Getter
+    public String getNombre() {
+        return nombre;
+    }
+    public int getNivel() {
+        return nivel;
+    }
+    public int getSalud() {
+        return salud;
+    }
+
     //Método abstracto que las clases hijas tendrán que desarrollar
     abstract void atacar();
 
