@@ -71,7 +71,7 @@ public class Mago extends Personaje_Magico implements Curable{
     //Método para cambiar el "equals" de esta clase
     @Override
     public boolean equals(Object objetoAComparar){
-        //Compruebo que la superClase de esta, "object" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
+        //Compruebo que la superClase de esta, "Personaje_Magico" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
         if (!super.equals(objetoAComparar)) return false;
         //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
         if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
