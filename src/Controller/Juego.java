@@ -92,11 +92,7 @@ public class Juego {
                 Hechicero noIgual = new Hechicero(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Hechicero) personaje).getMana()+1,((Hechicero) personaje).getConcentracion()+1);
                 System.out.println(personaje.equals(noIgual));
             }
-        }
 
-         //Recorremos el Array de los personajes
-         for(Personaje personaje : personajes){
-            //Comprobamos que la clase proceda de una clase concreta
             if(personaje instanceof Personaje_Fisico){
                 //LLamamos a todos los métodos de la clase Personaje_Fisico
                 ((Personaje_Fisico) personaje).atacar();
