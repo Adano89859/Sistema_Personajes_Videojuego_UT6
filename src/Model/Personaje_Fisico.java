@@ -29,18 +29,8 @@ public class Personaje_Fisico extends Personaje {
         System.out.println(getNombre()+ "Realiza un ataque");
     }
 
-    public void defender(){
-        System.out.println(getNombre()+ "se defiende");
-    }
-
-    
-
     public void cantarBalada(){
         System.out.println(getNombre()+ "El personaje canta su balada épica");
-    }
-
-    public void moverse(){
-        System.out.println(getNombre()+ "El personaje se mueve o cambia de posición");
     }
 
     @Override
