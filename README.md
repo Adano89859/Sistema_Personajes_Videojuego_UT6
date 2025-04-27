@@ -1,14 +1,18 @@
-ACTIVIDAD DE LA UT6 DE PROGRAMACIÓN: VIDEOJUEGO FANTÁSTICO
-INTRODUCCIÓN:
+# ACTIVIDAD DE LA UT6 DE PROGRAMACIÓN: VIDEOJUEGO FANTÁSTICO
+
+# INTRODUCCIÓN:
+Esta actividad consiste en crear una simulación básica de un videojuego fantástico, donde los personajes que se ambientan son de tipo físico: (guerreros, arqueros y asesinos) y tipo mágicos como: (hechizeros y magos), todos con cada una de sus estadísticas únicas asociadas que combatirán entre sí, los enfrentamientos discurrirán entre personajes diferentes o del mismo tipo, teniendo en cuenta que si dos personajes son del mismo tipo ej: asesino vs asesino, se mirará que sean diferentes en todo momento independientemente de sus estadísticas para evitar errores.  
 
 
-PARTES DE LA APLICACIÓN (MODELO MVC):
-MODELO:
-Es una parte funcional de la aplicación que se encarga de crear los objetos base que interactuarán con el sistema de gestión, para este caso, hemos implementado 3 modelos diferentes que hacen referencia a 3 objetos distintos, el modelo de clientes (Usuarios), donde se recogen atributos como (el código identificativo del cliente, nombre e historial dentro del hotel). El modelo de las habitaciones del hotel donde se atrubuye (numero de habitación, tipo, precio, estado y descripción), y por último, el modelo de reservas encargadas por los clientes donde se recogen (el id de reserva, la habitación reservada, el cliente que la reserva, el precio de la reserva y las fechas de plazo comprendidas de la reserva).
+# PARTES DE LA APLICACIÓN (MODELO MVC):
 
-CONTROLADOR:
+# MODELO:
+En esta parte, se recogen las interfaces y se desarrollan los personajes, cada uno con sus atributos, especificaciones y acciones, cada uno hedera de diferentes interfaces pero también heredan de un único objeto adaptado al tipo de personaje tipo (fisico o mágico), en cada clase de personaje hay métodos para distinguirlos si se da el enfrentamiento entre 2 personajes del mismo tipo y género Ej:(Asesino vs Asesino).
 
-APP (MAIN):
-Es la parte ejecutable de la aplicación y la más interactiva, se encuentra siempre del lado del cliente, y es donde se acciona el programa, está repleta de llamadas a los métodos de accón ya implementados en el gestor y donde se crean foncionalmente los objetos para los usuarios.
+# CONTROLADOR:
+Es en donde se recoge toda la lógica del sistema, se crea una clase juego donde se juntan todos los personajes, atributos y métodos a utilizar unos con otros, es el propio juego en sí, donde se recogen toda la funcionalidad y los sucesos. 
 
-CREADO POR: Adán Romero y Kevin Raseg ©2025. @1ºB-DAM
+# APP (MAIN):
+En la parte ejecutable de sistema, creamos ua lista (ArrayList) de los personajes y creamos los objetos personajes fisicos y personajes mágicos.
+
+# CREADO POR: Adán Romero y Kevin Raseg ©2025. @1ºB-DAM
