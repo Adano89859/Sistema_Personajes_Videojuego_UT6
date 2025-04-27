@@ -110,6 +110,22 @@ public class Juego {
                 //Lo comparo con un objeto que no sea igual
                 Hechicero noIgual = new Hechicero(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Hechicero) personaje).getMana()+1,((Hechicero) personaje).getConcentracion()+1);
                 System.out.println(personaje.equals(noIgual));
+           
+
+            if(personaje instanceof Personaje_Fisico){
+                //LLamamos a todos los métodos de la clase Personaje_Fisico
+                ((Personaje_Fisico) personaje).atacar();
+                ((Personaje_Fisico) personaje).cantarBalada();
+                System.out.println(((Personaje_Fisico) personaje).toString());
+                System.out.println(((Personaje_Fisico) personaje).hashCode());
+
+                //Comparamos el objeto con otro que sea igual
+                Personaje_Fisico igual = new Personaje_Fisico(personaje.getNombre(),personaje.getNivel(),personaje.getSalud());
+                System.out.println(personaje.equals(igual));
+
+                //Comparamos el objeto con otro que no sea igual
+                Personaje_Fisico noIgual = new Personaje_Fisico(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1);
+                System.out.println(personaje.equals(noIgual));
             }
 
             if(personaje instanceof Guerrero){
