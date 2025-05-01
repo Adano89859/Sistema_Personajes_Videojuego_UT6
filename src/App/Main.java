@@ -1,5 +1,6 @@
 package App;
 
+import Controller.Batalla;
 import Controller.Juego;
 import Model.Hechicero;
 import Model.Mago;
@@ -18,11 +19,17 @@ public class Main {
         //Creo la clase juego y le introduzco los personajes
         Juego juego = new Juego(crearPersonajesPredeterminados());
 
+        //Creo la clase de batalla
+        Batalla batalla = new Batalla(crearPersonajesPredeterminados());
+
 
         //Llamo al método "mostrarAciones" de "juego"
         juego.mostrarAcciones();
 
+        //Inicio la pelea
+        batalla.completoBatalla();
     }
+
     /*
     Resultado: Crea un ArrayList de personajes
     Return: Devuleve el ArrayList de personajes

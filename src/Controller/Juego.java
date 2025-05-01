@@ -93,7 +93,7 @@ public class Juego {
                 System.out.println(personaje.equals(noIgual));
             }
 
-            if(personaje instanceof Hechicero){
+            if(personaje instanceof Hechicero) {
                 //Hago todos los métodos de esta clase
                 ((Hechicero) personaje).atacar();
                 ((Hechicero) personaje).lanzarHechizo();
@@ -104,13 +104,13 @@ public class Juego {
                 System.out.println(((Hechicero) personaje).hashCode());
 
                 //Lo comparo con un objeto que sea igual
-                Hechicero igual = new Hechicero(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Hechicero) personaje).getMana(),((Hechicero) personaje).getConcentracion());
+                Hechicero igual = new Hechicero(personaje.getNombre(), personaje.getNivel(), personaje.getSalud(), ((Hechicero) personaje).getMana(), ((Hechicero) personaje).getConcentracion());
                 System.out.println(personaje.equals(igual));
 
                 //Lo comparo con un objeto que no sea igual
-                Hechicero noIgual = new Hechicero(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Hechicero) personaje).getMana()+1,((Hechicero) personaje).getConcentracion()+1);
+                Hechicero noIgual = new Hechicero(personaje.getNombre() + " el distinto", personaje.getNivel() + 1, personaje.getSalud() + 1, ((Hechicero) personaje).getMana() + 1, ((Hechicero) personaje).getConcentracion() + 1);
                 System.out.println(personaje.equals(noIgual));
-           
+            }
 
             if(personaje instanceof Personaje_Fisico){
                 //LLamamos a todos los métodos de la clase Personaje_Fisico
