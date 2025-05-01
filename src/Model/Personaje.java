@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 //Esta clase es abstracta
 public abstract class Personaje {
 
@@ -61,28 +63,23 @@ public abstract class Personaje {
         return "Personaje: "+this.nombre;
     }
 
-    //Método para cambiar el "equals" de esta clase
+   // Metodo para comparar entre objetos
     @Override
-    public boolean equals(Object objetoAComparar){
-        //Compruebo que la superClase de esta, "object" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
-        if (!super.equals(objetoAComparar)) return false;
-        //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
-        if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
-        //Convierto el objeto que me han dado en un "Personaje" para seguir comparando
-        Personaje objetoACompararConvertidoEnPersonaje = (Personaje) objetoAComparar;
-        //Considero que para ser el mismo objeto, debe tener el mismo NOMBRE y NIVEL
-        //Pero decido que no tiene porqué tener la misma SALUD
-        if(this.nombre.equals(objetoACompararConvertidoEnPersonaje.nombre) && this.nivel==objetoACompararConvertidoEnPersonaje.nivel){
-            return true;
-        }
-        //Si el nombre o el nivel no es el mismo, digo que no son el mismo personaje
-        return false;
+    public boolean equals(Object objetoAComparar) {
+        // Si el objeto coincide se cumple la igualdad
+        if (this == objetoAComparar) return true;
+        // Si es nulo o no coincide con la instancia personaje no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Personaje)) return false;
+        // Creamos otro personaje para que se cumpla la igualdad
+        // Si el personaje procede de la misma clase son el mismo, si no no se cumple la igualdad
+        Personaje otroPersonaje = (Personaje) objetoAComparar;
+        return Objects.equals(nombre, otroPersonaje.nombre) && this.getClass() == otroPersonaje.getClass();
     }
 
-    //Método para cambiar el "hashCode" de esta clase
+     // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //Hago que el hashCode coja el nombre de la clase
-        return this.nombre.hashCode();
+    public int hashCode() {
+        // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getClass());
     }
 }

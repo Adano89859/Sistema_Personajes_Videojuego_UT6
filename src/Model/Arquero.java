@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Arquero extends Personaje_Fisico implements Movilizable {
     // Atributos (se añaden los de su superclase):
    private int agilidad;
@@ -54,7 +56,7 @@ public class Arquero extends Personaje_Fisico implements Movilizable {
     @Override
     public void moverse(){
         //Atribuimos la movilidad del personaje
-        System.out.println(getNombre()+"Se mueve y cambia de posicion");
+        System.out.println(getNombre()+" Se mueve y cambia de posicion");
     }
     
     // Método de la propia clase de arquero
@@ -66,14 +68,13 @@ public class Arquero extends Personaje_Fisico implements Movilizable {
     // Método propio de la clase Arquero
     public void restablecerFlechas(){
         // Asignamos el reestablecimiento de flechas
-        System.out.println(getNombre()+"Las flechas se han reestablecido.");
+        System.out.println(getNombre()+" Las flechas se han restablecido.");
     }
 
     // LLamamos al metodo cantar balada de la clase Personaje_Fisico
-    @Override
     public void cantarBalada(){
         // Atribuimos que el personaje puede cantar una balada
-        super.cantarBalada();
+        System.out.println(getNombre()+" Canta su balada");
     }
 
     // Sobreescribimos el nombre del arquero para evitar referencias raras
@@ -82,27 +83,24 @@ public class Arquero extends Personaje_Fisico implements Movilizable {
         return "Arquero: " + this.nombre;
     }
 
-    // Método para comparar entre arqueros
+    // Método para comparar entre objetos
     @Override
-    public boolean equals(Object ObjetoComparacion){
-        // Comprobamos si la superclase Personaje_Fisico coincide, y que el objeto proceda de la misma, en caso contrario se anula la igualdad
-        if (!super.equals(ObjetoComparacion)) return false;
-        // Comprobamos que los objetos procedan de la misma clase, sino, se anula la igualdad
-        if (ObjetoComparacion == null || this.getClass() != ObjetoComparacion.getClass()) return false;
-        // Creamos un nuevo objeto y lo convertimos en un objeto arquero para seguir comparando
-        Arquero objetoArquero = (Arquero) ObjetoComparacion;
-         //Comparamos que los arqueros sean iguales si tienen la misma agilidad
-        if(this.getAgilidad()==objetoArquero.getAgilidad()){
-            return true;
-        }
-        // Si no tienen la misma agilidad, no son el mismo arquero
-        return false;
+    public boolean equals(Object objetoAComparar) {
+        // Si el objeto Arquero es igual al objeto se cumple la igualdad
+        if (this == objetoAComparar) return true;
+        // Si el objeto es nulo o no coincide con la instancia arquero no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Arquero)) return false;
+
+        //Creamos un nuevo objeto para comparar entre arqueros
+        // Si tienen la misma agilidad son el mismo si no la tienen devuelve false
+        Arquero otroArquero = (Arquero) objetoAComparar;
+        return Objects.equals(nombre, otroArquero.nombre) && this.getAgilidad() == otroArquero.getAgilidad();
     }
 
-    // Método para introducir el nombre de la clase en el hashCode
+    // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //EL hashCode detecta el nombre de la clase y lo coje
-        return this.nombre.hashCode();
+    public int hashCode() {
+        // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getAgilidad());
     }
 }

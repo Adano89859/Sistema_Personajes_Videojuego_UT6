@@ -1,4 +1,5 @@
 package Model;
+import java.util.Objects;
 
 public class Mago extends Personaje_Magico implements Curable{
 
@@ -51,7 +52,7 @@ public class Mago extends Personaje_Magico implements Curable{
     @Override
     public void curar(){
         //Por ahora solo digo que cura
-        System.out.println(getNombre()+" ha curado.");
+        System.out.println(getNombre()+" Se ha curado.");
     }
 
     //Método "orar" es heredado de "Personaje_Magico"
@@ -59,7 +60,7 @@ public class Mago extends Personaje_Magico implements Curable{
     //Método propio de esta clase, inventado
     public void generarMana(){
         //Por ahora solo digo que genera Mana
-        System.out.println(getNombre()+" genera Mana.");
+        System.out.println(getNombre()+" Genera Mana.");
     }
 
     //Método para cambiar el "toString" de esta clase
@@ -68,28 +69,25 @@ public class Mago extends Personaje_Magico implements Curable{
         return "Mago: "+this.nombre;
     }
 
-    //Método para cambiar el "equals" de esta clase
+    
+    // Método para comparar entre objetos
     @Override
-    public boolean equals(Object objetoAComparar){
-        //Compruebo que la superClase de esta, "Personaje_Magico" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
-        if (!super.equals(objetoAComparar)) return false;
-        //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
-        if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
-        //Convierto el objeto que me han dado en un "Mago" para seguir comparando
-        Mago objetoACompararConvertidoEnMago = (Mago) objetoAComparar;
-        //Añado que un "Mago" es igual a otro si también tiene la misma sabiduría
-        if(this.getSabiduria()==objetoACompararConvertidoEnMago.getSabiduria()){
-            return true;
-        }
-        //Si no tiene la misma sabiduría, no es el mismo personaje
-        return false;
+    public boolean equals(Object objetoAComparar) {
+        // Si el objeto mago es igual al objeto se cumple la igualdad
+        if (this == objetoAComparar) return true;
+        // Si el objeto es nulo o no coincide con la instancia mago no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Mago)) return false;
+         //Creamos un nuevo objeto para comparar entre magos
+        // Si tienen la misma sabiduría son el mismo si no la tienen devuelve false
+        Mago otroMago = (Mago) objetoAComparar;
+        return Objects.equals(nombre, otroMago.nombre) && this.getSabiduria() == otroMago.getSabiduria();
     }
 
-    //Método para cambiar el "hashCode" de esta clase
+    // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //Hago que el hashCode coja el nombre de la clase
-        return this.nombre.hashCode();
+    public int hashCode() {
+         // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getSabiduria());
     }
 
-    }
+}

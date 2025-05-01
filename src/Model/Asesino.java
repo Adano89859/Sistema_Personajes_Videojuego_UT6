@@ -1,6 +1,8 @@
 package Model;
 
-public class Asesino extends Personaje_Fisico implements Curable {
+import java.util.Objects;
+
+public class Asesino extends Personaje_Fisico implements Movilizable, Curable {
     // Atributos (se añaden los de su superclase):
     private int sigilo;
     private int critico;
@@ -54,8 +56,13 @@ public class Asesino extends Personaje_Fisico implements Curable {
     @Override
     public void curar(){
         //Atribuimos la capacidad de curarse al personaje
-        System.out.println(getNombre()+"Se ha curado");
+        System.out.println(getNombre()+" Se ha curado");
     }
+
+   @Override
+   public void moverse(){
+        System.out.println(getNombre()+ "Se mueve sigilosamente");
+   }
 
     //Método propio de la clase Asesino
     public void atacarPorEspalda(){
@@ -66,7 +73,13 @@ public class Asesino extends Personaje_Fisico implements Curable {
     //Método propio de la clase Asesino
     public void ocultar(){
         // Atribuimos la capacidad de ocultarse al personaje
-        System.out.println(getNombre()+ "Se ha ocultado");
+        System.out.println(getNombre()+ " Se ha ocultado");
+    }
+
+    // LLamamos al metodo cantar balada de la clase Personaje_Fisico
+    public void cantarBalada(){
+        // Atribuimos que el personaje puede cantar una balada
+        System.out.println(getNombre()+ " Canta su balada");
     }
 
     // Sobreescribimos el nombre del asesino para evitar referencias raras
@@ -75,27 +88,24 @@ public class Asesino extends Personaje_Fisico implements Curable {
         return "Asesino: " + this.nombre;
     }
 
-    // Método para comparar entre Asesinos
+    
+    // Método para comparar entre objetos
     @Override
-    public boolean equals(Object ObjetoComparacion){
-        // Comprobamos si la superclase Personaje_Fisico coincide, y que el objeto proceda de la misma, en caso contrario se anula la igualdad
-        if (!super.equals(ObjetoComparacion)) return false;
-        // Comprobamos que los objetos procedan de la misma clase, sino, se anula la igualdad
-        if (ObjetoComparacion == null || this.getClass() != ObjetoComparacion.getClass()) return false;
-        // Creamos un nuevo objeto y lo convertimos en un objeto asesino para seguir comparando
-        Asesino objetoAsesino = (Asesino) ObjetoComparacion;
-        //Comparamos que los asesinos sean iguales si tienen el mismo sigilo
-        if(this.getSigilo()==objetoAsesino.getSigilo()){
-            return true;
-        }
-         // Si no tienen el mismo sigilo, no son el mismo asesino
-        return false;
+    public boolean equals(Object objetoAComparar) {
+         // Si el objeto asesino es igual al objeto se cumple la igualdad
+        if (this == objetoAComparar) return true;
+         // Si el objeto es nulo o no coincide con la instancia asesino no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Asesino)) return false;
+         //Creamos un nuevo objeto para comparar entre asesinos
+        // Si tienen el mismo sigilo son el mismo si no la tienen devuelve false
+        Asesino otroAsesino = (Asesino) objetoAComparar;
+        return Objects.equals(nombre, otroAsesino.nombre) && this.getSigilo() == otroAsesino.getSigilo();
     }
 
-     // Método para introducir el nombre de la clase en el hashCode
+     // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-         //EL hashCode detecta el nombre de la clase y lo coje
-        return this.nombre.hashCode();
+    public int hashCode() {
+        // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getSigilo());
     }
 }
