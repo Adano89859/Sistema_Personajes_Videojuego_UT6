@@ -3,8 +3,6 @@ package Controller;
 import Model.Hechicero;
 import Model.Mago;
 import Model.Personaje;
-import Model.Personaje_Magico;
-import Model.Personaje_Fisico;
 import Model.Arquero;
 import Model.Guerrero;
 import Model.Asesino;
@@ -39,40 +37,6 @@ public class Juego {
 
         //Recorro el Array de los personajes
         for(Personaje personaje : personajes){
-            //Compruebo que la clase es de una clase concreta
-            if(personaje instanceof Personaje_Magico){
-                //Hago todos los métodos de esta clase
-                ((Personaje_Magico) personaje).atacar();
-                ((Personaje_Magico) personaje).lanzarHechizo();
-                ((Personaje_Magico) personaje).orar();
-                System.out.println(((Personaje_Magico) personaje).toString());
-                System.out.println(((Personaje_Magico) personaje).hashCode());
-
-                //Lo comparo con un objeto que sea igual
-                Personaje_Magico igual = new Personaje_Magico(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Personaje_Magico) personaje).getMana());
-                System.out.println(personaje.equals(igual));
-
-                //Lo comparo con un objeto que no sea igual
-                Personaje_Magico noIgual = new Personaje_Magico(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Personaje_Magico) personaje).getMana()+1);
-                System.out.println(personaje.equals(noIgual));
-            }
-
-            //Comprobamos que la clase proceda de una clase concreta
-            if(personaje instanceof Personaje_Fisico){
-                //LLamamos a todos los métodos de la clase Personaje_Fisico
-                ((Personaje_Fisico) personaje).atacar();
-                ((Personaje_Fisico) personaje).cantarBalada();
-                System.out.println(((Personaje_Fisico) personaje).toString());
-                System.out.println(((Personaje_Fisico) personaje).hashCode());
-
-                //Comparamos el objeto con otro que sea igual
-                Personaje_Fisico igual = new Personaje_Fisico(personaje.getNombre(),personaje.getNivel(),personaje.getSalud());
-                System.out.println(personaje.equals(igual));
-
-                //Comparamos el objeto con otro que no sea igual
-                Personaje_Fisico noIgual = new Personaje_Fisico(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1);
-                System.out.println(personaje.equals(noIgual));
-            }
 
             if(personaje instanceof Mago){
                 //Hago todos los métodos de esta clase
@@ -110,22 +74,6 @@ public class Juego {
                 //Lo comparo con un objeto que no sea igual
                 Hechicero noIgual = new Hechicero(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Hechicero) personaje).getMana()+1,((Hechicero) personaje).getConcentracion()+1);
                 System.out.println(personaje.equals(noIgual));
-           
-
-            if(personaje instanceof Personaje_Fisico){
-                //LLamamos a todos los métodos de la clase Personaje_Fisico
-                ((Personaje_Fisico) personaje).atacar();
-                ((Personaje_Fisico) personaje).cantarBalada();
-                System.out.println(((Personaje_Fisico) personaje).toString());
-                System.out.println(((Personaje_Fisico) personaje).hashCode());
-
-                //Comparamos el objeto con otro que sea igual
-                Personaje_Fisico igual = new Personaje_Fisico(personaje.getNombre(),personaje.getNivel(),personaje.getSalud());
-                System.out.println(personaje.equals(igual));
-
-                //Comparamos el objeto con otro que no sea igual
-                Personaje_Fisico noIgual = new Personaje_Fisico(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1);
-                System.out.println(personaje.equals(noIgual));
             }
 
             if(personaje instanceof Guerrero){
@@ -137,11 +85,11 @@ public class Juego {
                 System.out.println(((Guerrero) personaje).hashCode());
 
                 //Comparamos el objeto con otro que sea igual
-                Guerrero igual = new Guerrero(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Guerrero) personaje).getArmadura(),((Guerrero) personaje).getFuerza(), ((Guerrero) personaje).getEscudo());
+                Guerrero igual = new Guerrero(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Guerrero) personaje).getFuerza(),((Guerrero) personaje).getArmadura(),((Guerrero) personaje).getEscudo());
                 System.out.println(personaje.equals(igual));
 
                 //Comparamos el objeto con otro que no sea igual
-                Guerrero noIgual = new Guerrero(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1, ((Guerrero) personaje).getArmadura()+1,((Guerrero) personaje).getFuerza()+1, ((Guerrero) personaje).getEscudo()+1);
+                Guerrero noIgual = new Guerrero(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Guerrero) personaje).getFuerza()+1,((Guerrero) personaje).getArmadura()+1,((Guerrero) personaje).getEscudo()+1);
                 System.out.println(personaje.equals(noIgual));
             }
 
@@ -168,6 +116,7 @@ public class Juego {
                 ((Asesino) personaje).atacarPorEspalda();
                 ((Asesino) personaje).curar();
                 ((Asesino) personaje).ocultar();
+                ((Asesino) personaje).cantarBalada();
                 System.out.println(((Asesino) personaje).toString());
                 System.out.println(((Asesino) personaje).hashCode());
 

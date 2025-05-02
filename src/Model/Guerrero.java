@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Guerrero extends Personaje_Fisico implements Defendible {
     // Atributos (se añaden los de su superclase):
     private int fuerza;
@@ -64,20 +66,18 @@ public class Guerrero extends Personaje_Fisico implements Defendible {
     @Override
     public void defender(){
          //Atribuimos la capacidad de defenderse al personaje
-        System.out.println(getNombre()+"Se defiende");
+        System.out.println(getNombre()+" Se defiende");
     }
 
     //Método propio de la clase Guerrero
     public void cargarAtaque(){
         //LLamamos al metodo atacar de la clase personaje_fisico ya que cargar un ataque es un ataque
-       super.atacar();
+       System.out.println(getNombre()+ " Carga un ataque");
     }
 
-    // LLamamos al metodo cantar balada de la clase Personaje_Fisico
-    @Override
     public void cantarBalada(){
         // Atribuimos que el personaje puede cantar una balada
-        super.cantarBalada();
+        System.out.println(getNombre()+ " Canta su balada");
     }
 
     // Sobreescribimos el nombre del guerrero para evitar referencias raras
@@ -86,28 +86,23 @@ public class Guerrero extends Personaje_Fisico implements Defendible {
         return "Guerrero: " + this.nombre;
     }
 
-    // Método para comparar entre Guerreros
+    // Método para comparar entre objetos
     @Override
-    public boolean equals(Object ObjetoComparacion){
-         // Comprobamos si la superclase Personaje_Fisico coincide, y que el objeto proceda de la misma, en caso contrario se anula la igualdad
-        if (!super.equals(ObjetoComparacion)) return false;
-        // Comprobamos que los objetos procedan de la misma clase, sino, se anula la igualdad
-        if (ObjetoComparacion == null || this.getClass() != ObjetoComparacion.getClass()) return false;
-        // Creamos un nuevo objeto y lo convertimos en un objeto guerrero para seguir comparando
-        Guerrero objetoGuerrero = (Guerrero) ObjetoComparacion;
-        //Comparamos que los guerreros sean iguales si tienen el mismo sigilo
-        if(this.getFuerza()==objetoGuerrero.getFuerza()){
-            return true;
-        }
-        // Si no tienen la misma fuerza, no son el mismo guerrero
-        return false;
+    public boolean equals(Object objetoAComparar) {
+        // Si el objeto guerrero es igual al objeto se cumple la igualdad
+        if (this == objetoAComparar) return true;
+         // Si el objeto es nulo o no coincide con la instancia guerrero no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Guerrero)) return false;
+         //Creamos un nuevo objeto para comparar entre guerreros
+        // Si tienen la misma fuerza son el mismo si no la tienen devuelve false
+        Guerrero otroGuerrero = (Guerrero) objetoAComparar;
+        return Objects.equals(nombre, otroGuerrero.nombre) && this.getFuerza() == otroGuerrero.getFuerza();
     }
 
-    // Método para introducir el nombre de la clase en el hashCode
+     // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //EL hashCode detecta el nombre de la clase y lo coje
-        return this.nombre.hashCode();
+    public int hashCode() {
+         // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getFuerza());
     }
-
 }

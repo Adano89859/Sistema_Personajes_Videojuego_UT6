@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 /*
 
 AÑADIR LA INTERFACE DE "DEFENDIBLE" PARA SEGUIR TRABAJAMNDO ESTA CLASE
@@ -59,7 +61,7 @@ public class Hechicero extends Personaje_Magico implements Defendible{
     @Override
     public void defender(){
         //Por ahora solo digo que defiende
-        System.out.println(getNombre()+" defiende.");
+        System.out.println(getNombre()+" Se defiende.");
     }
 
     //Método "orar" es heredado de "Personaje_Magico"
@@ -67,7 +69,7 @@ public class Hechicero extends Personaje_Magico implements Defendible{
     //Método propio de esta clase, inventado
     public void invocarEntidad(){
         //Por ahora solo digo que invoca una Entidad
-        System.out.println(getNombre()+" invoca una Entidad.");
+        System.out.println(getNombre()+" Invoca una Entidad.");
     }
 
     //Método para cambiar el "toString" de esta clase
@@ -76,22 +78,24 @@ public class Hechicero extends Personaje_Magico implements Defendible{
         return "Hechicero: "+this.nombre;
     }
 
-    //Método para cambiar el "equals" de esta clase
+    
+    // Método para comparar entre objetos
     @Override
-    public boolean equals(Object objetoAComparar){
-        //Compruebo que la superClase de esta, "Personaje_magico" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
-        if (!super.equals(objetoAComparar)) return false;
-        //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
-        if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
-        //Considero que el Hechicero es igual a otro Hechicero segun los criterios de la superclase, es decir, no voy a usar la "concentracion" para la comparación
-        return true;
+    public boolean equals(Object objetoAComparar) {
+         // Si el objeto Hechicero es igual al objeto se cumple la igualdad
+        if (this == objetoAComparar) return true;
+        // Si el objeto es nulo o no coincide con la instancia hechicero no se cumple la igualdad
+        if (objetoAComparar == null || !(objetoAComparar instanceof Hechicero)) return false;
+        //Creamos un nuevo objeto para comparar entre hechiceros
+        // Si tienen la misma concentración son el mismo si no la tienen devuelve false
+        Hechicero otroHechicero = (Hechicero) objetoAComparar;
+        return Objects.equals(nombre, otroHechicero.nombre) && this.getConcentracion() == otroHechicero.getConcentracion();
     }
 
-    //Método para cambiar el "hashCode" de esta clase
+    // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //Hago que el hashCode coja el nombre de la clase
-        return this.nombre.hashCode();
+    public int hashCode() {
+        // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(nombre, getConcentracion());
     }
-
 }
