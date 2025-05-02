@@ -82,6 +82,13 @@ public class Batalla {
     public void inicioBatalla(){
 
         //Muestro el lore
+        System.out.println("+--------------------------------------------------------------------------------------------------------+");
+        System.out.println("En las más profundas entrañas del reino de void...");
+        System.out.println("Sólo los más valientes se enfrentarán en una intrépida y ");
+        System.out.println("encarnizada batalla a vida o muerte, para salir del vacío del tormento ");
+        System.out.println("que los acecha, sólo los más audaces conseguirán pasar la prueba de fuego ");
+        System.out.println("que los guiará por el camino hacia la luz y escapar de la inminente oscuridad del vacío...");
+        System.out.println("+--------------------------------------------------------------------------------------------------------+");
 
         //Le muestro al usuario los personajes que hay y le dejo escoger 2 de ellos
         for(Personaje personaje : getPersonajesPredeterminados()){
