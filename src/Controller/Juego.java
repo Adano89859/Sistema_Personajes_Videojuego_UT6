@@ -176,7 +176,7 @@ public class Juego {
                 System.out.println(personaje.equals(igual));
 
                 //Comparamos el objeto con otro que no sea igual
-                Asesino noIgual = new Asesino(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Asesino) personaje).getSigilo()+1,((Asesino) personaje).getCritico()+1);
+                Asesino noIgual = new Asesino(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1,true,((Asesino) personaje).getCritico()+1);
                 System.out.println(personaje.equals(noIgual));
             }
         }

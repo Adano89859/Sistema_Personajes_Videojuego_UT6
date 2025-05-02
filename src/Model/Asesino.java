@@ -2,13 +2,13 @@ package Model;
 
 public class Asesino extends Personaje_Fisico implements Curable {
     // Atributos (se añaden los de su superclase):
-    private int sigilo;
+    private boolean sigilo;
     private int critico;
 
     //Métodos
 
     //CONSTRUCTOR PRINCIPAL:
-    public Asesino(String nombre, int nivel, int salud, int sigilo, int critico){
+    public Asesino(String nombre, int nivel, int salud, boolean sigilo, int critico){
 
         super(nombre, nivel, salud);
         this.sigilo = sigilo;
@@ -17,23 +17,23 @@ public class Asesino extends Personaje_Fisico implements Curable {
 
     //Subconstructores con falta de parámetros
     public Asesino(int nivel, int salud){
-        this("Predeterminado", nivel, 100, 0, 0);
+        this("Predeterminado", nivel, 100, false, 0);
     }
 
     public Asesino(String nombre, int nivel){
-        this(nombre, nivel, 100, 0, 0);
+        this(nombre, nivel, 100, false, 0);
     }
 
     public Asesino(String nombre){
-        this(nombre, 0, 100, 0, 0);
+        this(nombre, 0, 100, false, 0);
     }
 
     public Asesino(int nivel){
-        this("Predeterminado", nivel, 100, 0, 0);
+        this("Predeterminado", nivel, 100, false, 0);
     }
 
     //Getters
-    public int getSigilo(){
+    public boolean getSigilo(){
         return sigilo;
     }
 
@@ -42,7 +42,7 @@ public class Asesino extends Personaje_Fisico implements Curable {
     }
 
     //Setters
-    public void setSigilo(int sigilo){
+    public void setSigilo(boolean sigilo){
         this.sigilo = sigilo;
     }
 
