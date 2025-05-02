@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Personaje_Magico extends Personaje implements Magico{
 
     //Atributos:
@@ -53,7 +55,7 @@ public class Personaje_Magico extends Personaje implements Magico{
     //Método propio de esta clase, inventado
     public void orar(){
         //Por ahora solo dice algo
-        System.out.println(getNombre()+" ha orado.");
+        System.out.println(getNombre()+" Ha orado.");
     }
 
     //Métodos de modificación sobre el objeto en sí (métodos originalmente de object)
@@ -64,22 +66,20 @@ public class Personaje_Magico extends Personaje implements Magico{
         return "Personaje Mágico: " + this.getNombre();
     }
 
-    //Método para cambiar el "equals" de esta clase
+    // Metodo para comparar entre objetos
     @Override
-    public boolean equals(Object objetoAComparar){
-        //Compruebo que la superClase de esta, "Personaje" en este caso, nos diga que este objeto es igual a ella, de no ser así, anulo la igualdad
-        if (!super.equals(objetoAComparar)) return false;
-        //Compruebo que sean de la misma clase y que no sea  nula, o sino anulo la comparación
+    public boolean equals(Object objetoAComparar) {
+        // Si el objeto coincide se cumple la igualdad
+        if (this == objetoAComparar) return true;
+        // Si es nulo o no procede de la misma clase no se cumple la igualdad
         if (objetoAComparar == null || this.getClass() != objetoAComparar.getClass()) return false;
-        //Debido a que esta clase "Personaje_Magico" no tiene nuevos atributos que me interesen para comparar, termino aquí la comparación
-        return true;
+        return super.equals(objetoAComparar);
     }
 
-    //Método para cambiar el "hashCode" de esta clase
+    // Utilizamos el hacshCode para obtener el objeto por su nombre y Agilidad que es lo que lo diferencia
     @Override
-    public int hashCode(){
-        //Hago que el hashCode de la clase recurra al hashCode de la superclase
-        return super.hashCode();
+    public int hashCode() {
+        // Hacemos la llamada al objeto y al atributo que lo diferencia
+        return Objects.hash(getClass()); 
     }
-
 }

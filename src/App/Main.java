@@ -39,6 +39,7 @@ public class Main {
         //Añado los personajes mágicos
         personajes.add(new Mago("Gandalf", 2, 7, 10,7));
         personajes.add(new Hechicero("Mer", 1, 3, 4,1));
+
         //Añado los personajes físicos
         personajes.add(new Guerrero("JGarVill", 5, 100, 90, 100, 100));
         personajes.add(new Arquero("RobinHood", 2, 10, 3,20));

@@ -72,7 +72,7 @@ public class Juego {
                 System.out.println(personaje.equals(igual));
 
                 //Lo comparo con un objeto que no sea igual
-                Hechicero noIgual = new Hechicero(personaje.getNombre() + " el distinto", personaje.getNivel() + 1, personaje.getSalud() + 1, ((Hechicero) personaje).getMana() + 1, ((Hechicero) personaje).getConcentracion() + 1);
+                Hechicero noIgual = new Hechicero(personaje.getNombre()+" el distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Hechicero) personaje).getMana()+1,((Hechicero) personaje).getConcentracion()+1);
                 System.out.println(personaje.equals(noIgual));
             }
 
@@ -85,11 +85,11 @@ public class Juego {
                 System.out.println(((Guerrero) personaje).hashCode());
 
                 //Comparamos el objeto con otro que sea igual
-                Guerrero igual = new Guerrero(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Guerrero) personaje).getArmadura(),((Guerrero) personaje).getFuerza(), ((Guerrero) personaje).getEscudo());
+                Guerrero igual = new Guerrero(personaje.getNombre(),personaje.getNivel(),personaje.getSalud(),((Guerrero) personaje).getFuerza(),((Guerrero) personaje).getArmadura(),((Guerrero) personaje).getEscudo());
                 System.out.println(personaje.equals(igual));
 
                 //Comparamos el objeto con otro que no sea igual
-                Guerrero noIgual = new Guerrero(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1, ((Guerrero) personaje).getArmadura()+1,((Guerrero) personaje).getFuerza()+1, ((Guerrero) personaje).getEscudo()+1);
+                Guerrero noIgual = new Guerrero(personaje.getNombre()+"distinto",personaje.getNivel()+1,personaje.getSalud()+1,((Guerrero) personaje).getFuerza()+1,((Guerrero) personaje).getArmadura()+1,((Guerrero) personaje).getEscudo()+1);
                 System.out.println(personaje.equals(noIgual));
             }
 
@@ -116,6 +116,7 @@ public class Juego {
                 ((Asesino) personaje).atacarPorEspalda();
                 ((Asesino) personaje).curar();
                 ((Asesino) personaje).ocultar();
+                ((Asesino) personaje).cantarBalada();
                 System.out.println(((Asesino) personaje).toString());
                 System.out.println(((Asesino) personaje).hashCode());
 
